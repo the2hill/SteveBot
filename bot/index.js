@@ -14,7 +14,7 @@ new DubAPI({ username: settings.USERNAME, password: settings.PASSWORD }, functio
     bot.log = require("jethro");
     bot.log.setTimeformat("YYYY-MM-DD HH:mm:ss:SSS");
 
-    bot.log("info", "BOT", 'Running SteveBot with DubAPI v' + bot.version);
+    bot.log("info", "BOT", 'Running TonerBot with DubAPI v' + bot.version);
 
     if (err) {
         return log("error", "BOT", err);

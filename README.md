@@ -1,4 +1,4 @@
-# SteveBot [![Build Status](https://travis-ci.org/coryshaw1/SteveBot.svg?branch=master)](https://travis-ci.org/coryshaw1/SteveBot) [![Dependency Status](https://david-dm.org/coryshaw1/SteveBot.svg)](https://david-dm.org/coryshaw1/SteveBot) [![Codacy Badge](https://api.codacy.com/project/badge/grade/95e8bcaa4add460fb05bba63c79986c1)](https://www.codacy.com/app/cory-shaw-dev/SteveBot) [![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/coryshaw1/SteveBot/blob/master/LICENSE)
+# TonerBot [![Build Status](https://travis-ci.org/coryshaw1/SteveBot.svg?branch=master)](https://travis-ci.org/coryshaw1/SteveBot) [![Dependency Status](https://david-dm.org/coryshaw1/SteveBot.svg)](https://david-dm.org/coryshaw1/SteveBot) [![Codacy Badge](https://api.codacy.com/project/badge/grade/95e8bcaa4add460fb05bba63c79986c1)](https://www.codacy.com/app/cory-shaw-dev/SteveBot) [![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/coryshaw1/SteveBot/blob/master/LICENSE)
 A Dubtrack Bot using DubAPI
 
 [List of commands](#commands)
@@ -52,7 +52,7 @@ Below are the list of commands that have been implemented.
 * **!missuniverse** - Having a little fun with Steve
 * **!raffle** - Force start a raffle. These normally happen randomly every 15-45 minutes.
     * *Note* - User that issued command must be a Manager or higher in room  
-* **!steve** - Help the rest of the room enjoy Steve even more
+* **!toner** - Help the rest of the room enjoy DubToner even more
 
 ### Info
 * **!commands** - Basic list of commands
