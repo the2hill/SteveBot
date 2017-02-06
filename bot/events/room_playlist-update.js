@@ -1,7 +1,7 @@
 var mediaInfo = require(process.cwd()+"/bot/utilities/media");
 var usersInfo = require(process.cwd()+"/bot/utilities/users");
 
-module.exports = function(bot, db) {
+module.exports = function(bot, db, clev) {
     bot.on(bot.events.roomPlaylistUpdate, function(data) {
         bot.updub();
 
@@ -14,7 +14,7 @@ module.exports = function(bot, db) {
                 if(usersInfo.usersThatHearted.length > 0)
                     messageToSend += " and ";
             }
-                
+
             if(usersInfo.usersThatHearted.length > 0) {
                 messageToSend += usersInfo.usersThatHearted.length + " heart" + (usersInfo.usersThatHearted.length > 1 ? "s" : "") + " :heart:";
             }

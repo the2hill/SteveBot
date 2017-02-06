@@ -7,6 +7,8 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "cleverbot": "^1.0.1",
+    "cleverbot.io": "^1.0.4",
     "dubapi": "^1.6.6",
     "fs": "0.0.2",
     "jethro": "^2.6.6",

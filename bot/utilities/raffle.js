@@ -12,20 +12,20 @@ module.exports.startRaffle = function startRaffle(bot) {
     if(vm.raffle) clearTimeout(vm.raffle); //don't have multiple raffle timeouts running at once
 
     //start another raffle in 15-45 min
-    setTimeout(function(){vm.startRaffle(bot)}, (Math.floor(Math.random() * (1000*60*45)) + (1000*60*15)));
+    setTimeout(function(){vm.startRaffle(bot)}, (Math.floor(Math.random() * (1000*60*60)) + (1000*60*90)));
 
     if(bot.getQueue().length <= 1 || vm.raffleStarted === true) return; //don't start a raffle if queue is too small or another is started
 
     vm.raffleStarted = true;
-            
+
     bot.sendChat(":loudspeaker: STARTING A RAFFLE! @djs want to be moved closer to the dj booth? type :point_right: " +
         "!join :point_left: and you might just get lucky! :clock7: you've got 30 seconds!");
 
     vm.raffle = setTimeout(function() {
         var numberEntered = vm.usersInRaffle.length + (vm.lockedNumberOne ? 1 : 0);
-        bot.sendChat(":clock7: The raffle expires in 10 seconds, " + numberEntered + " user" 
+        bot.sendChat(":clock7: The raffle expires in 10 seconds, " + numberEntered + " user"
             + (numberEntered == 1 ? " is" : "s are") + " participating! Hurry @djs and :point_right: !join :point_left:");
-    
+
         setTimeout(function() {
 
             var min = 0;

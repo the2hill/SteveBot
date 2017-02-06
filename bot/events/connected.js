@@ -2,10 +2,10 @@ var mediaInfo = require(process.cwd()+'/bot/utilities/media');
 var repo = require(process.cwd()+'/repo');
 var raffleService = require(process.cwd()+'/bot/utilities/raffle');
 
-module.exports = function(bot, db) {
+module.exports = function(bot, db, clev) {
     bot.on("connected", function(data) {
         bot.log("info", "BOT", 'Connected to ' + data);
-            
+
         setTimeout(function(){
             var users = bot.getUsers();
 
@@ -26,7 +26,7 @@ module.exports = function(bot, db) {
             }
 
             //start another raffle in 15-45 min
-            setTimeout(function(){raffleService.startRaffle(bot)}, (Math.floor(Math.random() * (1000*60*45)) + (1000*60*15)));
+            setTimeout(function(){raffleService.startRaffle(bot)}, (Math.floor(Math.random() * (1000*60*60)) + (1000*60*90)));
         }, 5000);
     });
 };
