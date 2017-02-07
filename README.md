@@ -1,5 +1,4 @@
-# TonerBot [![Build Status](https://travis-ci.org/coryshaw1/SteveBot.svg?branch=master)](https://travis-ci.org/coryshaw1/SteveBot) [![Dependency Status](https://david-dm.org/coryshaw1/SteveBot.svg)](https://david-dm.org/coryshaw1/SteveBot) [![Codacy Badge](https://api.codacy.com/project/badge/grade/95e8bcaa4add460fb05bba63c79986c1)](https://www.codacy.com/app/cory-shaw-dev/SteveBot) [![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/coryshaw1/SteveBot/blob/master/LICENSE)
-A Dubtrack Bot using DubAPI
+# TonerBot [![Build Status](https://travis-ci.org/the2hill/TonerBot.svg?branch=master)](https://travis-ci.org/the2hill/TonerBot)
 
 [List of commands](#commands)
 
@@ -19,6 +18,7 @@ A Dubtrack Bot using DubAPI
 ## Thanks
 * [anjanms/DubAPI](https://github.com/anjanms/DubAPI) by [@anjanms](https://github.com/anjanms)
 * [NitroGhost/dubbot-starter](https://github.com/NitroGhost/dubbot-starter) by [@NitroGhost](https://github.com/NitroGhost)
+* [SteveBot](https://github.com/coryshaw1/SteveBot) by [@CoreyShaw](https://github.com/coryshaw1/SteveBot)
 
 # [Commands](#commands)
 Below are the list of commands that have been implemented.
@@ -58,8 +58,10 @@ Below are the list of commands that have been implemented.
 * **!missuniverse** - Having a little fun with Steve
 * **!raffle** - Force start a raffle. These normally happen randomly every 15-45 minutes.
     * *Note* - User that issued command must be a Manager or higher in room
-* **!toner** - Help the rest of the room enjoy DubToner even more
+* **!toner** - Help the rest of the room enjoy DubToner even more and see how clever he has become.
 * **!todayfact** - A random inciteful fact about today
+* **!gif** - A random gif
+* **!(wilcard)** - Shows gifs related to search. ex: !help me
 
 ### Info
 * **!commands** - Basic list of commands
@@ -86,4 +88,4 @@ Below are the list of commands that have been implemented.
 * **!skip troll** - Skip the current song giving a reason that the song/video is trolling, *this also then kicks the DJ*
 
 
-Much more to come, and suggestions are welcome! Please add an [issue](https://github.com/coryshaw1/SteveBot/issues) for any requests or bugs!
+Much more to come, and suggestions are welcome! Please add an [issue](https://github.com/the2hill/TonerBot/issues) for any requests or bugs!
