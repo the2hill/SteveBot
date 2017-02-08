@@ -2,15 +2,25 @@ var mediaInfo = require(process.cwd()+"/bot/utilities/media");
     settings = require(process.cwd() + '/settings.js').settings;
     Cleverbot = require('cleverbot-node');
 
-
-
 var repo = require(process.cwd()+'/repo');
 
-module.exports = function(bot, db, data, clev) {
+var genre = [];
+
+module.exports = function(bot, db, data, clev, yt) {
     bot.log("info", "BOT", 'TonerBot: ' + data.params.join(" "));
     if(data.params.length > 0) {
-        var query = data.params.join(" ")
-        if (query.includes('song')) {
+        var query = data.params.join(" ");
+        if (query.includes(".q")) {
+            query = query.substring(2);
+            yt.search(query, 2, function(error, result) {
+              if (error) {
+                bot.log("info", "BOT", 'Error Response: ' + error);
+              }
+              else {
+                bot.queueMedia("youtube", result['items'][0]['id']['videoId'], function(response){});
+              }
+            });
+        } else if (query.includes('song')) {
             bot.sendChat(mediaInfo.currentName + ' is currently playing...');
         } else {
 //            bot.sendChat('testfool');

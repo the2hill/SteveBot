@@ -79,6 +79,8 @@ Below are the list of commands that have been implemented.
 * **!lock @username** - Lock/Pause @username's queue from playing
 * **!lockskip** - Skip the current DJ, and lock/pause their queue. Useful for DJs that are AFK and continue to requeue
 * **!pause @username** - Lock/Pause @username's queue from playing
+* **!dj** - Force start DubToner as DJ. This check normally happens randomly every 2-5 minutes.
+    * *Note* - User that issued command must be a Manager or higher in room
 
 ##### For Resident DJs and higher
 * **!skip** - Skip the current song without reason or message using a reason of (broke, nsfw, op, theme, troll, and more to come) can leave blank if just want to skip without reason

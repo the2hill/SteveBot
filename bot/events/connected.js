@@ -2,7 +2,7 @@ var mediaInfo = require(process.cwd()+'/bot/utilities/media');
 var repo = require(process.cwd()+'/repo');
 var raffleService = require(process.cwd()+'/bot/utilities/raffle');
 
-module.exports = function(bot, db, clev) {
+module.exports = function(bot, db, clev, yt) {
     bot.on("connected", function(data) {
         bot.log("info", "BOT", 'Connected to ' + data);
 

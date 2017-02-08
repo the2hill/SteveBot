@@ -6,6 +6,8 @@ var DubAPI = require("dubapi"),
     settings = require(process.cwd() + '/settings.js').settings;
     cluster = require('cluster');
     cleverbot = require("cleverbot-node");
+    YouTube = require('youtube-node');
+
 
 //make logger timestamp more readable
 log.setTimeformat("YYYY-MM-DD HH:mm:ss:SSS");
@@ -62,8 +64,10 @@ if (cluster.isWorker) {
 
 //            clev = new cleverbot(settings.API_USER, settings.API_KEY);
             clev = new cleverbot;
+            youTube = new YouTube();
+            youTube.setKey(settings.API_KEY);
 
-            require("./events")(bot, db, clev);
+            require("./events")(bot, db, clev, youTube);
         });
     });
 }

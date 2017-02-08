@@ -1,8 +1,15 @@
 var mediaInfo = require(process.cwd()+"/bot/utilities/media");
 var usersInfo = require(process.cwd()+"/bot/utilities/users");
+var dj = require(process.cwd()+"/bot/utilities/dj");
 
-module.exports = function(bot, db, clev) {
+module.exports = function(bot, db, clev, yt) {
     bot.on(bot.events.roomPlaylistUpdate, function(data) {
+
+        if(bot.getQueue().length <= 1 || !dj.djStarted === true) {
+            dj.startDj(bot, yt);
+            return;
+        }
+
         bot.updub();
 
         if(usersInfo.usersThatPropped.length > 0 || usersInfo.usersThatHearted.length > 0) {
@@ -47,5 +54,6 @@ module.exports = function(bot, db, clev) {
         mediaInfo.currentID = data.media.fkid;
         mediaInfo.currentType = data.media.type;
         mediaInfo.currentDJName = (data.user == undefined ? "404usernamenotfound" : (data.user.username == undefined ? "404usernamenotfound" : data.user.username));
+
     });
 };
