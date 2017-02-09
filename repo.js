@@ -21,7 +21,7 @@ var logUser = function(db, user, callback) {
 	});
 };
 
-var findUserById = function(db, userid, callback) { 
+var findUserById = function(db, userid, callback) {
 	db.collection("users").findOne( { "id": userid }, function(err, doc) {
 		if (doc != null) {
 	        callback(doc);
@@ -43,6 +43,43 @@ var insertUser = function(db, user, callback) {
 	db.collection("users").insertOne(user, function(err, result) {
 	    callback(result.ops[0]);
   	});
+};
+
+var findSpinByQ = function(db, q, callback) {
+	db.collection("spins").findOne( { "q": q }, function(err, doc) {
+		if (doc != null) {
+	        callback(doc);
+	    } else {
+	        callback();
+	    }
+	});
+};
+
+
+var addSpin = function(db, spin, callback) {
+    findSpinByQ(db, spin, function(foundSpin) {
+		if(!foundSpin){
+			insertSpin(db, spin, function(newSpin){
+				return callback(spin);
+			});
+		}
+	});
+};
+
+var insertSpin = function(db, spin, callback) {
+	db.collection("spins").insert({'q': spin}, function(err, result) {
+	   return callback(result.ops[0]);
+  	});
+};
+
+var findSpins = function(db, callback) {
+        db.collection("spins").find().toArray(function(err, spins) {
+            if (spins != null) {
+                return callback(spins);
+                } else {
+                    return callback();
+            }
+	});
 };
 
 var propsUser = function(db, user, callback) {
@@ -105,10 +142,25 @@ var heartsLeaders = function(db, callback) {
 	});
 };
 
+// String queries of tunes to search for and spin
+var spins = function(db, callback) {
+	var heartsCursor = db.collection("users").find().sort( { hearts: -1 } ).limit(3);
+	heartsCursor.toArray(function(err, docs) {
+		if (docs != null) {
+			callback(docs);
+		} else {
+			callback();
+		}
+	});
+};
+
 module.exports.logUser = logUser;
 module.exports.findUserById = findUserById;
 module.exports.updateUser = updateUser;
 module.exports.insertUser = insertUser;
+module.exports.addSpin = addSpin;
+module.exports.insertSpin = insertSpin;
+module.exports.findSpins = findSpins;
 module.exports.propsUser = propsUser;
 module.exports.heartsUser = heartsUser;
 module.exports.propsLeaders = propsLeaders;

@@ -1,16 +1,15 @@
 var mediaInfo = require(process.cwd()+"/bot/utilities/media");
 var usersInfo = require(process.cwd()+"/bot/utilities/users");
+var spinsInfo = require(process.cwd()+"/bot/utilities/spins");
 var dj = require(process.cwd()+"/bot/utilities/dj");
 
 module.exports = function(bot, db, clev, yt) {
     bot.on(bot.events.roomPlaylistUpdate, function(data) {
+        bot.updub();
 
         if(bot.getQueue().length <= 1 || !dj.djStarted === true) {
             dj.startDj(bot, yt);
-            return;
         }
-
-        bot.updub();
 
         if(usersInfo.usersThatPropped.length > 0 || usersInfo.usersThatHearted.length > 0) {
             var messageToSend = "'" + mediaInfo.currentName + "', queued by " + mediaInfo.currentDJName + " received ";

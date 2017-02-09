@@ -7,6 +7,12 @@ module.exports = function(bot, db, data, yt) {
         });
     }
 
+    if (data.params.join(" ").includes('stop')) {
+        dj.djCanSpin = false;
+    } else if (data.params.join(" ").includes('start')) {
+        dj.djCanSpin = true;
+    }
+
     if(!dj.djStarted)
         dj.startDj(bot, yt);
 };
