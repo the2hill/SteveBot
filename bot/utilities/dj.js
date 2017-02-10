@@ -37,7 +37,10 @@ module.exports.startDj = function startDj(bot, yt) {
       }
       else {
         var rand = (Math.floor(Math.random() * LIMIT - 1));
-        bot.queueMedia("youtube", result['items'][rand]['id']['videoId'], function(response){});
+        if ('items' in result) {
+            var qmed = result['items'][rand]['id']['videoId'];
+            bot.queueMedia("youtube", qmed, function(response){});
+        }
       }
     });
     vm.djStarted = false;

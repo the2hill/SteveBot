@@ -5,7 +5,7 @@ var DubAPI = require("dubapi"),
     repo = require(process.cwd() + '/repo.js'),
     settings = require(process.cwd() + '/settings.js').settings;
     cluster = require('cluster');
-    cleverbot = require("cleverbot-node");
+    cleverbot = require("cleverbot.io");
     YouTube = require('youtube-node');
 
 
@@ -62,10 +62,9 @@ if (cluster.isWorker) {
 
             connect();
 
-//            clev = new cleverbot(settings.API_USER, settings.API_KEY);
-            clev = new cleverbot;
+            clev = new cleverbot(settings.API_USER, settings.API_KEY);
             youTube = new YouTube();
-            youTube.setKey(settings.API_KEY);
+            youTube.setKey(settings.YT_KEY);
 
             require("./events")(bot, db, clev, youTube);
         });
