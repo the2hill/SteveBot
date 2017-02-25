@@ -5,7 +5,7 @@ var usersInfo = require(process.cwd()+"/bot/utilities/users");
 // public beta key...
 var properties = {q: 'quagmire+bill+cosby', api_key: 'dc6zaTOxFJmzC'};
 
-module.exports = function(bot, db, clev, yt) {
+module.exports = function(bot, db, clev, yt, rw) {
     bot.on(bot.events.roomPlaylistGrab, function(data) {
         bot.log("info", "BOT", data.user.username + ': Grabbed ' +  mediaInfo.currentName + ' Played By: ' + mediaInfo.currentDJName);
 //         public beta key...

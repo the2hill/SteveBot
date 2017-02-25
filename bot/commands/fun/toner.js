@@ -11,12 +11,14 @@ module.exports = function(bot, db, data, clev, yt) {
         var query = data.params.join(" ");
         if (query.includes(".q")) {
             query = query.substring(2);
-            yt.search(query, 2, function(error, result) {
+            yt.search(query, 50, function(error, result) {
               if (error) {
                 bot.log("info", "BOT", 'Error Response: ' + error);
               }
               else {
-                bot.queueMedia("youtube", result['items'][0]['id']['videoId'], function(response){});
+                bot.queueMedia("youtube",
+                result['items'][(Math.floor(Math.random() * 49))]['id']['videoId'],
+                function(response){});
               }
             });
         } else if (query.includes('song')) {

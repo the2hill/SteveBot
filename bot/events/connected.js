@@ -4,7 +4,7 @@ var raffleService = require(process.cwd()+'/bot/utilities/raffle');
 var spinsInfo = require(process.cwd()+'/bot/utilities/spins');
 var dj = require(process.cwd()+"/bot/utilities/dj");
 
-module.exports = function(bot, db, clev, yt) {
+module.exports = function(bot, db, clev, yt, rw) {
     repo.addSpin(db, "cher", function(spin){});
     repo.findSpins(db, function(spins){
         spinsInfo.spins.push.apply(spinsInfo.spins, spins)

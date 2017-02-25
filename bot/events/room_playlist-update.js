@@ -3,7 +3,7 @@ var usersInfo = require(process.cwd()+"/bot/utilities/users");
 var spinsInfo = require(process.cwd()+"/bot/utilities/spins");
 var dj = require(process.cwd()+"/bot/utilities/dj");
 
-module.exports = function(bot, db, clev, yt) {
+module.exports = function(bot, db, clev, yt, rw) {
     bot.on(bot.events.roomPlaylistUpdate, function(data) {
         bot.updub();
 

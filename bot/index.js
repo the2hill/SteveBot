@@ -3,24 +3,25 @@ var DubAPI = require("dubapi"),
     MongoClient = require('mongodb').MongoClient,
     pkg = require(process.cwd() + "/package.json"),
     repo = require(process.cwd() + '/repo.js'),
-    settings = require(process.cwd() + '/settings.js').settings;
-    cluster = require('cluster');
-    cleverbot = require("cleverbot.io");
-    YouTube = require('youtube-node');
+    settings = require(process.cwd() + '/settings.js').settings,
+    cluster = require('cluster'),
+    cleverbot = require("cleverbot.io"),
+    YouTube = require('youtube-node'),
+    Swagger = require('swagger-client');
 
 
 //make logger timestamp more readable
 log.setTimeformat("YYYY-MM-DD HH:mm:ss:SSS");
 
- if (cluster.isMaster) {
-      cluster.fork();
+// if (cluster.isMaster) {
+//      cluster.fork();
+//
+//      cluster.on('exit', function(worker, code, signal) {
+//        cluster.fork();
+//      });
+//    }
 
-      cluster.on('exit', function(worker, code, signal) {
-        cluster.fork();
-      });
-    }
-
-if (cluster.isWorker) {
+//if (cluster.isWorker) {
     new DubAPI({ username: settings.USERNAME, password: settings.PASSWORD }, function(err, bot) {
 
         if (err) {
@@ -62,13 +63,28 @@ if (cluster.isWorker) {
 
             connect();
 
-            clev = new cleverbot(settings.API_USER, settings.API_KEY);
-            youTube = new YouTube();
+            var clev = new cleverbot(settings.API_USER, settings.API_KEY);
+
+            var youTube = new YouTube();
             youTube.setKey(settings.YT_KEY);
 
-            require("./events")(bot, db, clev, youTube);
+//            var rw = Wordnik.getRandomWordModel({
+//                includePartOfSpeech: "verb-transitive",
+//                minCorpusCount: 10000
+//              }
+//            );
+
+            var rw = new Swagger({
+              url: settings.WN_URL,
+              success: function() {},
+              authorizations : {
+                someQueryAuth: new Swagger.ApiKeyAuthorization('api_key', settings.WN_PASSWORD, 'query'),
+              }
+            });
+
+            require("./events")(bot, db, clev, youTube, rw);
         });
     });
-}
+//}
 
 

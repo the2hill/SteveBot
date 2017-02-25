@@ -1,7 +1,7 @@
 var fs = require("fs"),
     path = require("path");
 
-module.exports = function(bot, db, clev, yt) {
+module.exports = function(bot, db, clev, yt, rw) {
     //cache all the commands here by auto requiring them and passing the bot
     //supports directories no matter how deep you go. twss
     var commands = {},
@@ -59,7 +59,9 @@ module.exports = function(bot, db, clev, yt) {
                             commands['toner'](bot, db, data, clev, yt);
                         } else if (data.trigger == "dj") {
                             commands['dj'](bot, db, data, yt);
-                        }else {
+                        } else if (data.trigger == "gif") {
+                            commands['gif'](bot, db, data, rw, function(rwerd){});
+                        } else {
                             commands[data.trigger](bot, db, data);
                         }
                     } else {

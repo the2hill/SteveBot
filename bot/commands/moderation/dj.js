@@ -1,4 +1,5 @@
 var dj = require(process.cwd()+"/bot/utilities/dj");
+var rw = require(process.cwd()+"/bot/utilities/randomword");
 
 module.exports = function(bot, db, data, yt) {
 	if(!bot.hasPermission(data.user, "set-roles") && data.user.username != "mbsurfer") {
